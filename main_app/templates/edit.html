@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/edit_recipe.css' %}">
+    <title>Edit Recipe</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Edit a Recipe</h1>
+        <form action="/{{ recipe.id }}/update_recipe" method="post">
+            <div id="first_half_form">
+                {% csrf_token %}
+                <p>
+                    Recipe Title:
+                    <input type="text" name="recipe_title" value="{{ recipe.recipe_title }}">
+                </p>
+                <p>
+                    Description: <br>
+                    <textarea name="description" cols="30" rows="10">{{ recipe.description }}</textarea>
+                </p>
+                <p>
+                    Ingredients: <br>
+                    <textarea name="ingredients" cols="30" rows="10">{{ recipe.ingredients }}</textarea>
+                </p>
+            </div>
+            <div id="second_half_form">
+                <p>
+                    Directions: <br>
+                    <textarea name="directions" cols="30" rows="10">{{ recipe.directions }}</textarea>
+                </p>
+                <p>
+                    Prep Time:
+                    <input type="text" name="prep_time" value="{{ recipe.prep_time }}">
+                </p>
+                <p>
+                    Cook Time:
+                    <input type="text" name="cook_time" value="{{ recipe.cook_time }}">
+                </p>
+                <p>
+                    Number of Servings:
+                    <input type="number" name="num_of_servings" value="{{ recipe.num_of_servings }}">
+                </p>
+                <button id="update">Update Recipe!</button>
+                <a href="/dashboard">Back to Dashboard</a>
+                <a href="/recipes/{{ recipe.id }}">Back to Recipe</a>
+            </div>
+        </form>
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* outline: solid red 1px; */
+}
+
+body {
+    background-color: lightblue;
+}
+
+h1{
+    text-align: center;
+}
+
+
+#join {
+    margin-top: 10px;
+    margin-right: 4%;
+}
+
+#login {
+    margin-top: 10px;
+    margin-left: 48%;
+}
+
+#kitchen_img{
+    width: 74%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#forms {
+    display:flex;
+    justify-content: center;
+}
+
+#register_section {
+    margin-left: 11%;
+}
+
+#left {
+    margin-right: 34%;
+}
+
+.messages {
+    margin-top: 3%;
+    text-align: center;
+}
+
+#food_image {
+    display: flex;
+    justify-content: center;
+}
