@@ -15,9 +15,19 @@
 <body>
     <div id="wrapper">
         <div id="header">
-            <h1>Welcome to your recipes {{ user.first_name }}!</h1>
-            <a id="logout" href="/logout">Logout</a>
+            <h1>Healthy Foods || Welcome {{ user.first_name }}</h1>
+            <span class="form_and_logout">
+                <form action="{% url 'search-recipes' %}" method=POST>
+                    {% csrf_token%}
+                    <input type="text" name="searched" placeholder="Search Recipes"/>
+                    <button type="submit">Search</button>
+                </form>
+                <span class="logout">
+                    <a href="/logout">Logout</a>
+                </span>
+            </span>
         </div>
+        <h3>Your saved recipes: </h3>
         <table>
             <thead>
                 <tr>
@@ -55,7 +65,7 @@
             </tbody>
         </table>
         <a id="create_link" href="/add_recipe">Create a Recipe</a>
-        <h1 id="all_recipes_header" >All Recipes</h1>
+        <h3 id="all_recipes_header" >All Recipes</h3>
         <table id="all_recipes">
             <thead>
                 <tr>

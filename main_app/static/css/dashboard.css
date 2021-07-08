@@ -14,9 +14,24 @@ body {
     justify-content: space-between;
 }
 
-#logout {
-    margin-right: 20px;
-    margin-top: 10px;
+/* span {
+    margin-right: 40px;
+    margin-top: 20px;
+} */
+
+.logout {
+    margin-right: 50px;
+    margin-top: 15px;
+}
+
+form {
+    margin-right: 50px;
+    margin-top: 15px;
+}
+
+.form_and_logout {
+    display: flex;
+    justify-content: space-between;
 }
 
 #all_recipes {
@@ -60,11 +75,16 @@ table {
     margin-top: 20px;
 }
 
-h1 {
+h1, h3 {
     font-family: 'Times New Roman', Times, serif;
     margin-left: 10px;
 }
 
 #recipe_title {
     width: 19%;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
 }

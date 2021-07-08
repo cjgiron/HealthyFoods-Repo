@@ -194,3 +194,12 @@ def delete_comment(request, recipe_id, comment_id):
 
     this_comment.delete()
     return redirect(f'/recipes/{recipe_id}')
+
+
+def search_recipes(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        recipes = Recipe.objects.filter(recipe_title__contains=searched)
+        return render(request, "search_recipes.html", {'searched': searched, 'recipes': recipes})
+    else:
+        return render(request, "search_recipes.html", {})
