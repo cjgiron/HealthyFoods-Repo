@@ -1,0 +1,28 @@
+footer {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-left: solid black 20px;
+}
+
+.foot {
+    background-color: black;
+    color: white;
+}
+
+.socials {
+    text-align: center;
+}
+
+.bi {
+    color: white;
+}
+
+.socials a {
+    text-decoration: none;
+}
+
+

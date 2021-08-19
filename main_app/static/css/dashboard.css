@@ -4,7 +4,7 @@
     /* outline: solid red 1px; */
 }
 
-body {
+#container {
     background-color: lightblue;
 }
 
@@ -47,7 +47,7 @@ form {
     outline: solid black 1px;
 }
 
-p {
+.paragraph {
     width: 700px;
     white-space: nowrap;
     overflow: hidden;

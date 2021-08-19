@@ -1,17 +1,21 @@
-* {
-    margin-left: 5px;
-    padding: 0;
-}
-
-body {
+#container {
     background-color: lightblue;
 }
 
-ul {
-    list-style-type: none;
+#wrapper {
+    border-left: solid lightblue 20px;
 }
+
 
 #each_comment {
     margin-top: 10px;
+    list-style-type: none;
 }
 
+#actual_comment {
+    list-style-type: none;
+}
+
+#process_comment {
+    padding-bottom: 20px;
+}

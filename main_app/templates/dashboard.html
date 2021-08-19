@@ -13,87 +13,90 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <div id="wrapper">
-        <div id="header">
-            <h1>Healthy Foods || Welcome {{ user.first_name }}</h1>
-            <span class="form_and_logout">
-                <form action="{% url 'search-recipes' %}" method=POST>
-                    {% csrf_token%}
-                    <input type="text" name="searched" placeholder="Search Recipes"/>
-                    <button type="submit">Search</button>
-                </form>
-                <span class="logout">
-                    <a href="/logout">Logout</a>
+    <div id="container">
+        <div id="wrapper">
+            <div id="header">
+                <h1>Healthy Foods || Welcome {{ user.first_name }}</h1>
+                <span class="form_and_logout">
+                    <form action="{% url 'search-recipes' %}" method=POST>
+                        {% csrf_token%}
+                        <input type="text" name="searched" placeholder="Search Recipes"/>
+                        <button type="submit">Search</button>
+                    </form>
+                    <span class="logout">
+                        <a href="/logout">Logout</a>
+                    </span>
                 </span>
-            </span>
-        </div>
-        <h3>Your saved recipes: </h3>
-        <table>
-            <thead>
-                <tr>
-                    <th scope="col">Recipe Title</th>
-                    <th scope="col">Recipe Description</th>
-                    <th scope="col">Date Added</th>
-                    <th scope="col" id="created_by">Created By</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for recipe in user.recipes.all %}
-                <tr>
-                    <td><a href="/recipes/{{ recipe.id }}">{{ recipe.recipe_title }}</a></td>
-                    <td><p>{{ recipe.description }}</p></td>
-                    <td>{{ recipe.created_at }}</td>
-                    <td>{{ recipe.user.first_name }} {{ recipe.user.last_name }}</td>
-                    <td>
-                        <a href="{{ recipe.id }}/edit_recipe">Edit</a> |
-                        <a href="{{ recipe.id }}/delete">Delete</a>
-                    </td>
-                </tr>
-                {% endfor %}
-                {% for recipe in user.recipes_followed.all %}
-                <tr>
-                    <td id="recipe_title"><a href="/recipes/{{ recipe.id }}">{{ recipe.recipe_title }}</a></td>
-                    <td><p>{{ recipe.description }}</p></td>
-                    <td>{{ recipe.created_at }}</td>
-                    <td>{{ recipe.user.first_name }} {{ recipe.user.last_name }}</td>
-                    <td>
-                        <a href="{{ recipe.id }}/remove">Remove from my List</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <a id="create_link" href="/add_recipe">Create a Recipe</a>
-        <h3 id="all_recipes_header" >All Recipes</h3>
-        <table id="all_recipes">
-            <thead>
-                <tr>
-                    <th scope="col">Recipe Title</th>
-                    <th scope="col">Recipe Description</th>
-                    <th scope="col">Date Added</th>
-                    <th scope="col">Created By</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for recipe in all_recipes %}
-                    {% if recipe not in user.recipes_followed.all %}
-                        {% if recipe not in user.recipes.all %}
-                            <tr>
-                                <td><a href="/recipes/{{ recipe.id }}">{{ recipe.recipe_title }}</a></td>
-                                <td><p>{{ recipe.description }}</p></td>
-                                <td>{{ recipe.created_at }}</td>
-                                <td>{{ recipe.user.first_name }} {{ recipe.user.last_name }}</td>
-                                <td>
-                                    <a href="{{ recipe.id }}/follow">Add</a>
-                                </td>
-                            </tr>
+            </div>
+            <h3>Your saved recipes: </h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Recipe Title</th>
+                        <th scope="col">Recipe Description</th>
+                        <th scope="col">Date Added</th>
+                        <th scope="col" id="created_by">Created By</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for recipe in user.recipes.all %}
+                    <tr>
+                        <td><a href="/recipes/{{ recipe.id }}">{{ recipe.recipe_title }}</a></td>
+                        <td><p class="paragraph">{{ recipe.description }}</p></td>
+                        <td>{{ recipe.created_at }}</td>
+                        <td>{{ recipe.user.first_name }} {{ recipe.user.last_name }}</td>
+                        <td>
+                            <a href="{{ recipe.id }}/edit_recipe">Edit</a> |
+                            <a href="{{ recipe.id }}/delete">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% for recipe in user.recipes_followed.all %}
+                    <tr>
+                        <td id="recipe_title"><a href="/recipes/{{ recipe.id }}">{{ recipe.recipe_title }}</a></td>
+                        <td><p class="paragraph">{{ recipe.description }}</p></td>
+                        <td>{{ recipe.created_at }}</td>
+                        <td>{{ recipe.user.first_name }} {{ recipe.user.last_name }}</td>
+                        <td>
+                            <a href="{{ recipe.id }}/remove">Remove from my List</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a id="create_link" href="/add_recipe">Create a Recipe</a>
+            <h3 id="all_recipes_header" >All Recipes</h3>
+            <table id="all_recipes">
+                <thead>
+                    <tr>
+                        <th scope="col">Recipe Title</th>
+                        <th scope="col">Recipe Description</th>
+                        <th scope="col">Date Added</th>
+                        <th scope="col">Created By</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for recipe in all_recipes %}
+                        {% if recipe not in user.recipes_followed.all %}
+                            {% if recipe not in user.recipes.all %}
+                                <tr>
+                                    <td><a href="/recipes/{{ recipe.id }}">{{ recipe.recipe_title }}</a></td>
+                                    <td><p class="paragraph">{{ recipe.description }}</p></td>
+                                    <td>{{ recipe.created_at }}</td>
+                                    <td>{{ recipe.user.first_name }} {{ recipe.user.last_name }}</td>
+                                    <td>
+                                        <a href="{{ recipe.id }}/follow">Add</a>
+                                    </td>
+                                </tr>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
-                {% endfor %}
-            </tbody>
-        </table>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% include 'footer.html' %}
+        </div>
     </div>
 </body>
 </html>

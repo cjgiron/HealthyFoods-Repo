@@ -8,25 +8,28 @@
     rel="stylesheet" 
     integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/display.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
     <!-- CSS only -->
     <title>Searched Recipes</title>
 </head>
 <body>
-{% block content %}
-    <center>
-    {% if searched %}
-        <h1>You Searched For {{ searched }}</h1>
-        {% for recipe in recipes %}
-            <a href="/recipes/{{ recipe.id }}">{{recipe.recipe_title}}</a> <br/>
-        {% endfor %}
+    <div id="container">
+        {% block content %}
+            <center>
+            {% if searched %}
+                <h1>You Searched For: {{ searched }}</h1>
+                {% for recipe in recipes %}
+                    <a href="/recipes/{{ recipe.id }}">{{recipe.recipe_title}}</a> <br/>
+                {% endfor %}
 
-    {% else %}
-        <h1>Hey! You forgot to Search For A Recipe</h1>
-    {% endif %}
+            {% else %}
+                <h1>Hey! You forgot to Search For A Recipe</h1>
+            {% endif %}
 
 
-    </center>
-{% endblock %}
+            </center>
+        {% endblock %}
+    </div>
+{% include 'footer.html' %}
 </body>
 </html>
